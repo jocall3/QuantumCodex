@@ -1,0 +1,64 @@
+# Quantum Configuration File (QCF) - Default Settings
+# This file contains the default configuration for the quantum terminal simulator.
+# Settings defined here can be overridden by user-specific or project-specific QCF files.
+
+[simulator]
+# Specifies the default simulation backend.
+# 'local_statevector' is a high-performance simulator running in the browser.
+# Other potential backends: 'remote_qpu', 'density_matrix'
+backend = "local_statevector"
+
+# The computational device to use for simulation.
+# For web-based simulators, this is typically the CPU.
+# Options: "CPU"
+device = "CPU"
+
+# The numerical precision for statevector calculations.
+# 'double' provides higher accuracy at the cost of performance and memory.
+# Options: "single", "double"
+precision = "double"
+
+
+[execution]
+# The default number of times each circuit is run to sample measurement outcomes.
+# A value of 0 indicates an ideal, noise-free simulation that calculates exact probabilities.
+# A value > 0 simulates statistical sampling. 1024 is a common standard.
+shots = 1024
+
+# Default memory limit for the simulator in megabytes (MB).
+# Prevents simulations of very large qubit counts from crashing the browser tab.
+memory_limit_mb = 2048
+
+
+[logging]
+# The default logging level for the application.
+# Determines the verbosity of messages printed to the console.
+# Options: "DEBUG", "INFO", "WARN", "ERROR", "NONE"
+level = "INFO"
+
+# The destination for log messages.
+# 'console' directs output to the browser's developer console.
+# 'terminal' directs output to the application's own rendered terminal.
+output = "terminal"
+
+# Format for timestamps in log messages.
+# Follows common date formatting conventions.
+# Example: 2023-10-27 14:35:01.123
+timestamp_format = "YYYY-MM-DD HH:mm:ss.SSS"
+
+
+[ui]
+# Default theme for the terminal interface.
+# Corresponds to a CSS file or a predefined color scheme.
+# Example themes: "dark_matter", "solarized_light", "hacker"
+theme = "dark_matter"
+
+# Default font for the terminal.
+# Should be a monospace font available to the browser.
+font_family = "Fira Code, monospace"
+
+# Default font size in pixels.
+font_size = 14
+
+# Enable or disable the blinking cursor in the terminal.
+blinking_cursor = true
