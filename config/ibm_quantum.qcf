@@ -1,0 +1,57 @@
+# Quantum Configuration File (QCF) for IBM Quantum
+#
+# This file contains the necessary configuration to connect to IBM Quantum services.
+# Replace the placeholder values with your actual credentials and desired settings.
+# For security, it is recommended to use environment variables for your API token.
+
+[provider]
+name = "ibm_quantum"
+label = "IBM Quantum"
+description = "Access to IBM's quantum computers and simulators via the cloud."
+
+[credentials]
+# Your IBM Quantum API token.
+# You can find this on your IBM Quantum account page: https://quantum.ibm.com/account
+# To use an environment variable, you can use the format: token = "${env:IBM_QUANTUM_TOKEN}"
+token = "YOUR_IBM_QUANTUM_API_TOKEN_HERE"
+
+# Optional: Specify the hub, group, and project for your account.
+# If not specified, the default one associated with your token will be used.
+hub = "ibm-q"
+group = "open"
+project = "main"
+
+# --- Backend Configurations ---
+# You can define specific configurations for different IBM Quantum backends.
+# This allows for easy switching and pre-configured settings for experiments.
+
+[backends.ibm_q_armonk]
+# ibm_q_armonk is a single-qubit device, good for simple tests and tutorials.
+name = "ibm_q_armonk"
+description = "A 1-qubit backend, ideal for basic experiments and validation."
+min_qubits = 1
+max_qubits = 1
+simulator = false
+
+[backends.ibmq_qasm_simulator]
+# The QASM simulator is a powerful classical simulator for quantum circuits.
+name = "ibmq_qasm_simulator"
+description = "A general-purpose quantum circuit simulator for up to 32 qubits."
+min_qubits = 1
+max_qubits = 32 # Note: Max qubits can vary based on system resources.
+simulator = true
+
+[backends.ibm_brisbane]
+# An example of a larger, more recent quantum processor.
+# Check the IBM Quantum website for the latest available systems and their status.
+name = "ibm_brisbane"
+description = "A 127-qubit Eagle R3 processor."
+min_qubits = 1
+max_qubits = 127
+simulator = false
+
+# --- Default Settings ---
+# You can specify a default backend to use if none is explicitly chosen in your code.
+[defaults]
+backend = "ibmq_qasm_simulator"
+shots = 1024 # Default number of times to run the circuit.
