@@ -1,0 +1,63 @@
+# Quantum Configuration File (QCF) for AWS Braket
+#
+# This file contains the necessary configuration to connect to and run tasks
+# on AWS Braket quantum devices and simulators.
+#
+# Instructions:
+# 1. Replace "your-s3-bucket-name" with the name of an S3 bucket in your AWS account.
+# 2. Ensure the specified AWS region matches the region of your S3 bucket.
+# 3. Uncomment or add device ARNs as needed for your quantum tasks.
+
+[aws]
+# The default AWS region to use for Braket API calls.
+# Common regions for Braket include: us-east-1, us-west-1, us-west-2, eu-west-2
+region = "us-east-1"
+
+# The S3 bucket where your quantum task results will be stored.
+# This bucket must exist in your AWS account in the specified region.
+s3_bucket = "your-s3-bucket-name"
+
+# The prefix (folder path) within the S3 bucket to store results.
+# This helps organize results from different experiments.
+s3_prefix = "quantum-terminal/results"
+
+
+[devices]
+# A list of available AWS Braket device ARNs.
+# You can assign a short, user-friendly alias to each device ARN.
+# The full list of available devices can be found in the AWS Braket console
+# or by using the AWS SDK/CLI.
+
+# --- On-Demand Simulators ---
+# State Vector simulator (up to 34 qubits)
+sv1 = "arn:aws:braket:::device/quantum-simulator/amazon/sv1"
+
+# Tensor Network simulator (up to 50 qubits for certain circuits)
+tn1 = "arn:aws:braket:::device/quantum-simulator/amazon/tn1"
+
+# Density Matrix simulator (up to 17 qubits, supports noise)
+dm1 = "arn:aws:braket:::device/quantum-simulator/amazon/dm1"
+
+
+# --- QPUs (Quantum Processing Units) ---
+# Note: Availability of QPUs can change. Always verify the ARNs and their
+# operational status in the AWS Braket console.
+
+# --- IonQ ---
+# Region: us-east-1
+ionq_harmony = "arn:aws:braket:us-east-1::device/qpu/ionq/Harmony"
+ionq_aria-1 = "arn:aws:braket:us-east-1::device/qpu/ionq/Aria-1"
+ionq_aria-2 = "arn:aws:braket:us-east-1::device/qpu/ionq/Aria-2"
+ionq_forte = "arn:aws:braket:us-east-1::device/qpu/ionq/Forte"
+
+# --- Rigetti ---
+# Region: us-west-1
+rigetti_aspen-m-3 = "arn:aws:braket:us-west-1::device/qpu/rigetti/Aspen-M-3"
+
+# --- Oxford Quantum Circuits (OQC) ---
+# Region: eu-west-2
+oqc_lucy = "arn:aws:braket:eu-west-2::device/qpu/oqc/Lucy"
+
+# --- QuEra ---
+# Region: us-east-1
+quera_aquila = "arn:aws:braket:us-east-1::device/qpu/quera/Aquila"
